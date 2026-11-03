@@ -56,8 +56,9 @@ Renders skeletal landmark connections and joint keypoints directly onto the prov
 - **Returns:**
   - `np.ndarray`: The modified image frame with rendered lines and joints.
 - **Rendering Specifications:**
-  - Bones: Red lines (`BGR: (0, 0, 255)`), thickness 2 px.
-  - Joints: Green solid circles (`BGR: (0, 255, 0)`), radius 4 px.
+  - Skeletal Bonds: Gold/cyan lines (`BGR: (255, 215, 0)`), thickness 2 px.
+  - Joints: Concentric circles with inner white core (`radius = 2`) and outer green ring (`BGR: (0, 255, 65)`, `radius = 4`), plus fingertip target rings (`radius = 7`).
+  - Reticles: Bounding corner brackets around detected hands with dynamic handedness tags.
 
 ---
 

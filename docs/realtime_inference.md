@@ -69,18 +69,20 @@ CONFIDENCE_THRESHOLD = 0.75
 
 ## Heads-Up Display (HUD) and Visual Overlay
 
-The live interface provides clear, low-latency visual feedback drawn directly onto the video canvas using OpenCV primitives:
+The live interface provides a tactical cyberpunk-style HUD rendered directly onto the video canvas using alpha-blended OpenCV primitives:
 
-1. **Top Status Bar:**
-   A semi-transparent dark banner (`(30, 30, 30)` RGB) is rendered across the top 100 pixels of the window (`cv2.rectangle`).
-2. **Prediction Display:**
-   Displays `Prediction: <CHAR>` in bright green (`(0, 255, 0)`) font when a confident prediction is active, or white/gray during transitional states.
-3. **Confidence Meter:**
-   Displays `Confidence: XX.X%` in white text (`(255, 255, 255)`), providing immediate verification of gesture clarity.
-4. **Skeletal Landmark Overlay:**
+1. **Top Telemetry Banner:**
+   A semi-transparent dark glass panel (`alpha = 0.78`) spans the top of the viewport, bounded by a matrix green accent line (`(0, 255, 65)`).
+   - **Target Class:** Large bold prediction display (`TARGET >> [ A ]`) in matrix green when locked, amber (`(0, 180, 255)`) when unverified, or neutral gray during standby.
+   - **Confidence Gauge:** A segmented graphical progress bar with real-time percentage and lock state indicators (`[LOCKED]` or `[ACQUIRING]`).
+   - **System Telemetry:** Live smoothed FPS counter and hand tracking status (`HANDS: 1/2 [ACTIVE]`).
+2. **Bottom Terminal Banner:**
+   A dedicated prompt buffer at the bottom of the screen displays `TERMINAL >> ` with the accumulated sentence and a blinking cursor (`_`), alongside a shortcut cheat-sheet.
+3. **Tactical Landmark Overlay:**
    Rendered by [`overlay_hand_landmarks`](../src/hand_landmarker.py):
-   - **Joint Vertices:** 21 green circles (`(0, 255, 0)`) with radius 4 px at each anatomical joint.
-   - **Bones / Connections:** Red lines (`(0, 0, 255)`) with thickness 2 px connecting anatomical bone pairs according to MediaPipe's `HAND_CONNECTIONS` topology.
+   - **Skeletal Bonds:** Cyber-gold lines (`(255, 215, 0)` in BGR) tracing joint connections.
+   - **Joint Vertices:** Concentric points featuring an inner white core (`radius = 2`) and outer cyber-green ring (`radius = 4`), with distinct target lock rings around fingertips.
+   - **Hand Reticles:** Corner brackets `[ ]` tracking the bounding boundaries of detected hands with dynamic handedness tags (e.g. `[LEFT_LOCKED]`, `[RIGHT_LOCKED]`).
 
 ## Interactive Sentence Accumulator
 
