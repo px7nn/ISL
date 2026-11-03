@@ -111,7 +111,7 @@ plt.show()
 # Save model
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
-joblib.dump(model, MODEL_DIR / "isl_classifier.pkl")
+joblib.dump(model, MODEL_DIR / "isl_classifier.pkl", compress=3)
 joblib.dump(encoder, MODEL_DIR / "label_encoder.pkl")
 
 print("\nModel saved successfully!")

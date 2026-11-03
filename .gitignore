@@ -1,5 +1,14 @@
-datasets/
-models/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
 
-*.pyc
-*__pycache__*
+
+# Datasets and processed feature caches
+datasets/
+*.npy
+*.npz
+
+# Training plot artifacts (generated at project root)
+/confusion_matrix.png
